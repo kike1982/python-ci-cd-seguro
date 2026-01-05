@@ -14,8 +14,8 @@ jobs:
     - name: Checkout código
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}  # Permite push desde Actions
-        fetch-depth: 0                      # Necesario para crear la rama badges
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
 
     - name: Setup Python
       uses: actions/setup-python@v5
@@ -40,4 +40,4 @@ jobs:
         git checkout -B badges
         git add coverage.svg
         git commit -m "Actualizar coverage badge" || echo "No hay cambios que commitear"
-        git push origin badges --force  # Ahora funciona sin 403
+        git push origin badges --force
