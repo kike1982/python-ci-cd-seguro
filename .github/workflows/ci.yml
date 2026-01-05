@@ -13,9 +13,6 @@ jobs:
     steps:
     - name: Checkout código
       uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
 
     - name: Setup Python
       uses: actions/setup-python@v5
@@ -23,21 +20,10 @@ jobs:
         python-version: '3.10'
 
     - name: Instalar dependencias
-      run: pip install pytest pytest-cov coverage-badge
+      run: pip install pytest pytest-cov
 
     - name: Ejecutar tests y coverage
       run: |
         export PYTHONPATH=$PYTHONPATH:$(pwd)
         pytest --cov=app
 
-    - name: Generar coverage badge
-      run: coverage-badge -o coverage.svg -f
-
-    - name: Subir badge a rama badges
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-        git checkout -B badges
-        git add coverage.svg
-        git commit -m "Actualizar coverage badge" || echo "No hay cambios que commitear"
-        git push origin badges --force
