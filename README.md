@@ -14,6 +14,7 @@ Este proyecto es un ejemplo de **puesta en producción segura** de una aplicaci�
   - Orquestación con Jenkins
 
 ## Estructura del proyecto
+```text
 python-ci-cd-seguro/
 ├── app/                # Carpeta del código principal
 │   └── main.py         # Funciones de la aplicación
