@@ -37,4 +37,4 @@ jobs:
         git checkout -B badges
         git add coverage.svg
         git commit -m "Actualizar coverage badge" || echo "No hay cambios que commitear"
-        git push origin badges --force
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} badges --force
